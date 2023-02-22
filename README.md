@@ -1,6 +1,6 @@
 <h2 align="center">
   Portfolio Website<br/>
-  <a href="https://my-portfolio-jdpzgz3ze-omima618.vercel.app/" target="_blank">Omima Khaled Portfolio</a>
+  <a href="https://omima618.github.io/my-portfolio/" target="_blank">Omima Khaled Portfolio</a>
 </h2>
 <div align="center">
 </div>
