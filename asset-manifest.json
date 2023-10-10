@@ -1,31 +1,34 @@
 {
   "files": {
     "main.css": "/my-portfolio/static/css/main.7744ec79.css",
-    "main.js": "/my-portfolio/static/js/main.5f2ce9ac.js",
+    "main.js": "/my-portfolio/static/js/main.3ec1ec6a.js",
     "static/js/415.4d6acbeb.chunk.js": "/my-portfolio/static/js/415.4d6acbeb.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/my-portfolio/static/js/787.1ed0c42c.chunk.js",
     "static/media/feliciano-resturant.png": "/my-portfolio/static/media/feliciano-resturant.05f2928fb11e04a45bc4.png",
     "static/media/movies-hub.png": "/my-portfolio/static/media/movies-hub.0b591437ef1529436594.png",
     "static/media/daruma-art.png": "/my-portfolio/static/media/daruma-art.57433fce932363689cfe.png",
     "static/media/rently.png": "/my-portfolio/static/media/rently.a801338e07cd1da80d43.png",
+    "static/media/gold-blv.png": "/my-portfolio/static/media/gold-blv.8e321689e946f35533e8.png",
     "static/media/mapty-app.png": "/my-portfolio/static/media/mapty-app.23bd4e1db5630801cef1.png",
     "static/media/simple-ecommerce.png": "/my-portfolio/static/media/simple-ecommerce.981ed207513f83866ef5.png",
+    "static/media/muslimc.png": "/my-portfolio/static/media/muslimc.4cadbf806b1accecf800.png",
     "static/media/weather-app.png": "/my-portfolio/static/media/weather-app.23ededb38c6c0079ea0e.png",
     "static/media/nest-market.png": "/my-portfolio/static/media/nest-market.d0fb5294a521dc21fcc8.png",
     "static/media/about.svg": "/my-portfolio/static/media/about.56ddc53722f9aa356cd40a441bb5b666.svg",
     "static/media/pre.gif": "/my-portfolio/static/media/pre.37c4da9d0567392d749c.gif",
-    "static/media/Omima_Khaled_Frontend_Dev_CV.pdf": "/my-portfolio/static/media/Omima_Khaled_Frontend_Dev_CV.ab43d2f9bfcbbee145fd.pdf",
+    "static/media/Omima_Khaled_Frontend_Dev_CV.pdf": "/my-portfolio/static/media/Omima_Khaled_Frontend_Dev_CV.b07a07a60bca4b28f44a.pdf",
+    "static/media/almeswak.png": "/my-portfolio/static/media/almeswak.516b40d86d9c4c405292.png",
     "static/media/support-desk.png": "/my-portfolio/static/media/support-desk.1f698ac68305d441c2b9.png",
     "static/media/avatar.svg": "/my-portfolio/static/media/avatar.96613b3ee1836159ec26e7a352b9e76a.svg",
     "static/media/home-main-2.svg": "/my-portfolio/static/media/home-main-2.7c64a2e7739eb1c5a2ab27529b12b1de.svg",
     "index.html": "/my-portfolio/index.html",
     "main.7744ec79.css.map": "/my-portfolio/static/css/main.7744ec79.css.map",
-    "main.5f2ce9ac.js.map": "/my-portfolio/static/js/main.5f2ce9ac.js.map",
+    "main.3ec1ec6a.js.map": "/my-portfolio/static/js/main.3ec1ec6a.js.map",
     "415.4d6acbeb.chunk.js.map": "/my-portfolio/static/js/415.4d6acbeb.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/my-portfolio/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7744ec79.css",
-    "static/js/main.5f2ce9ac.js"
+    "static/js/main.3ec1ec6a.js"
   ]
 }
