@@ -2,6 +2,9 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
+import goldBlv from "../../Assets/Projects/gold-blv.png";
+import almeswak from "../../Assets/Projects/almeswak.png";
+import muslimc from "../../Assets/Projects/muslimc.png";
 import moviesHub from "../../Assets/Projects/movies-hub.png";
 import rently from "../../Assets/Projects/rently.png";
 import simpleEcommerce from "../../Assets/Projects/simple-ecommerce.png";
@@ -24,6 +27,36 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={goldBlv}
+              isBlog={false}
+              title="Gold Boulevard"
+              description="Gold multi vendors e-commerce website"
+              demoLink="https://goldblv.com/ar"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={almeswak}
+              isBlog={false}
+              title="Al Meswak"
+              description="Dental clinics website"
+              demoLink="https://new.royalclinicksa.com/ar"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={muslimc}
+              isBlog={false}
+              title="Muslim Scholars Association"
+              description="Islamic news and articles website"
+              demoLink="https://muslimsc.net/"
+            />
+          </Col>
+          
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={moviesHub}
@@ -94,6 +127,7 @@ function Projects() {
               demoLink="https://omima618.github.io/Nest_Market/" 
             />
           </Col>
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={feliciano}
@@ -104,6 +138,7 @@ function Projects() {
               demoLink="https://omima618.github.io/Feliciano_Resturant/" 
             />
           </Col>
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={daruma}
@@ -114,6 +149,7 @@ function Projects() {
               demoLink="https://omima618.github.io/Daruma-Project/" 
             />
           </Col>
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={supportTickets}
