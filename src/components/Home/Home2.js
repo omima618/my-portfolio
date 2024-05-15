@@ -21,48 +21,49 @@ function Home2() {
                             MYSELF
                         </h1>
                         <p className='home-about-body'>
-                            I am a frontend developer with hands in
+                            I am an experienced
+                            <i>
+                                <b className='main-color'> Frontend Developer </b>
+                            </i>
+                            with nearly
+                            <i>
+                                <b className='main-color'> 2 years of experience </b>
+                            </i>
+                            in frontend development technologies,
+                            specializing in
+                            <i>
+                                <b className='main-color'> JavaScript </b>
+                            </i>
+                            with a strong emphasis on
+                            <i>
+                                <b className='main-color'> Angular </b>
+                            </i>
+                            as my primary framework, complemented by
                             <i>
                                 <b className='main-color'> React.js </b>
                             </i>
-                            as a mian framework.
-                            <br />I am also familiar with
+                            as a secondary framework.
+                            <br />
+                            <br />
+                            Skilled in seamlessly
                             <i>
-                                <b className='main-color'> Angular. </b>
+                                <b className='main-color'> integrating </b>
                             </i>
+                            frontend with backend systems and proficient in working with APIs to augment functionality and enhance user experience.
                             <br />
                             <br />
-                            Able to integrate
+                            Passionate about creating elegant user interfaces that not only captivate visually but also adapt seamlessly across all screen sizes.
+                            <br />
+                            <br />
+                            Proficient in converting designs into interactive, responsive websites with meticulous attention to detail.
+                            <br />
+                            <br />
+                            Recognized for my exceptional
                             <i>
-                                <b className='main-color'>
-                                    {" "}
-                                    frontend with backend{" "}
-                                </b>
+                                <b className='main-color'> problem-solving </b>
                             </i>
-                            and work with    <i>
-                                <b className='main-color'>
-                                    {" "}
-                                    apis.
-                                </b>
-                            </i>
-                            <br />
-                            <br />
-                            I am very Passionate about creating elegant user
-                            interfaces,
-                            <br />
-                            that are responsive to all screens.
-                            <br />
-                            <br />
-                            Able to convert any Design on Figma or AdobeXD to a
-                            responsive interactive website.
-                            <br />
-                            <br />I am famaliar with
-                            <i>
-                                <b className='main-color'>
-                                    {" "}
-                                    Node.js & Mongo DB.
-                                </b>
-                            </i>
+                            abilities and knack for conducting thorough research,
+                            consistently delivering innovative solutions to intricate challenges.
                         </p>
                     </Col>
                     <Col md={4} className='myAvtar'>
