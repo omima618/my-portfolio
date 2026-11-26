@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Tokens ────────────────────────────────────────────────────────────────
+   Palette drawn from the portrait: dusty rose + champagne on deep plum ink
+   (dark) or warm ivory (light). */
+:root {
+  --bg: #faf7f3;
+  --bg-elev: #ffffff;
+  --bg-soft: #f3ede7;
+  --fg: #1c1520;
+  --fg-soft: #3b3140;
+  --muted: #6e6270;
+  --line: rgb(28 21 32 / 0.09);
+  --line-strong: rgb(28 21 32 / 0.16);
+  --accent: #b14f76;
+  --accent-soft: rgb(177 79 118 / 0.1);
+  --gold: #a5773a;
+  --glow-1: rgb(225 150 178 / 0.45);
+  --glow-2: rgb(232 201 160 / 0.45);
+  --glow-3: rgb(168 140 220 / 0.25);
+  --card: rgb(255 255 255 / 0.7);
+  --shadow: 0 1px 2px rgb(28 21 32 / 0.04), 0 12px 40px -12px rgb(28 21 32 / 0.14);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #0d0a10;
+  --bg-elev: #15111a;
+  --bg-soft: #1a1520;
+  --fg: #f5eff2;
+  --fg-soft: #ddd3d9;
+  --muted: #a3969e;
+  --line: rgb(255 255 255 / 0.08);
+  --line-strong: rgb(255 255 255 / 0.15);
+  --accent: #eba4bd;
+  --accent-soft: rgb(235 164 189 / 0.1);
+  --gold: #e6c79c;
+  --glow-1: rgb(214 112 152 / 0.28);
+  --glow-2: rgb(214 175 120 / 0.18);
+  --glow-3: rgb(120 92 200 / 0.22);
+  --card: rgb(255 255 255 / 0.03);
+  --shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 20px 50px -20px rgb(0 0 0 / 0.7);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-bg-soft: var(--bg-soft);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--gold);
+  --color-card: var(--card);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+  --shadow-soft: var(--shadow);
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6%, -4%, 0) scale(1.08); }
+  66% { transform: translate3d(-5%, 5%, 0) scale(0.95); }
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────── */
+@utility container-x {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) { padding-inline: 1.5rem; }
+  @media (width >= 64rem) { padding-inline: 2rem; }
+}
+
+@utility text-gradient {
+  background: linear-gradient(110deg, var(--accent) 10%, var(--gold) 55%, var(--accent) 95%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background: var(--card);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Soft drifting light behind the hero. */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  animation: drift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Faint grid that fades out toward the edges. */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* Cursor-following spotlight on cards (vars set by <Spotlight>). */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 45%);
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Solid-enough glass for things that float over content (nav, chips). */
+@utility glass-strong {
+  background: color-mix(in oklab, var(--bg-elev) 88%, transparent);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}

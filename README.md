@@ -1,27 +1,62 @@
-<h2 align="center">
-  Portfolio Website<br/>
-  <a href="https://omima618.github.io/my-portfolio/" target="_blank">Omima Khaled Portfolio</a>
-</h2>
-<div align="center">
-</div>
-  <img alt="Demo" src="./Images/readme-img.png" />
-<br/>
+# Omima Khaled Ghanem — Portfolio
 
-## Getting Started
+Personal portfolio of **Omima Khaled Ghanem**, Frontend Developer & Software Tester.
 
-Clone down this repository. You will need `node.js` and `git` installed globally on your machine.
+**Stack:** Next.js 16 (App Router, Cache Components) · React 19 · MongoDB (native driver) · Tailwind CSS v4 · Motion · Zod · TypeScript.
 
-## 🛠 Installation and Setup Instructions
+## Features
 
-1. Installation: `npm install`
+- Hero with portrait, animated name, rotating roles, and parallax.
+- Light and dark themes (follows the system setting, remembered per visitor, no flash on load).
+- Sections: About with animated stats · Experience timeline with a line that fills as you scroll · Skills bento · Featured projects (Tester Assistant, Meeting Hub) and a filterable project grid · Résumé with CV download · Contact form.
+- Content comes from the CV and lives in one file: `src/content/site.ts`.
+- **MongoDB**
+  - `projects` collection: the site reads projects from here (cached for 1 hour), so you can reorder, hide (`hidden: true`) or edit projects without a redeploy. If no database is set up, the site uses the built-in list.
+  - `messages` collection: messages sent through the contact form, with validation, a honeypot field to block bots and a limit of 3 messages per hour per sender. If no database is set up, the form opens the visitor's email app instead.
+- Responsive from 320px up, respects reduced motion, adds SEO metadata and JSON-LD.
 
-2. In the project directory, you can run: `npm start`
+## Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.
+```bash
+npm install
+cp .env.example .env.local   # optional: add MONGODB_URI
+npm run dev                  # http://localhost:3000
+```
 
-## Usage Instructions
+| Variable | Description |
+| --- | --- |
+| `MONGODB_URI` | MongoDB Atlas connection string (optional) |
+| `MONGODB_DB` | Database name (default `portfolio`) |
+| `NEXT_PUBLIC_SITE_URL` | Public URL used in social previews, e.g. `https://omima.vercel.app` |
 
-Open the project folder and Navigate to `/src/components/`. <br/>
-You will find all the components used and you can edit your information accordingly.
+Seed the projects into MongoDB (safe to run again; `--reset` drops the collection first):
+
+```bash
+npm run db:seed
+```
+
+## Updating content
+
+- Text, experience, skills and projects: `src/content/site.ts`. After changing projects, run `npm run db:seed` again if you use MongoDB.
+- CV: replace `public/cv/Omima-Khaled-Ghanem-CV.pdf`.
+- Photo and screenshots: `public/images/`.
+
+## Deploying (Vercel)
+
+1. Import the GitHub repository in Vercel (framework preset: Next.js).
+2. Add `MONGODB_URI`, `MONGODB_DB` and `NEXT_PUBLIC_SITE_URL` as environment variables.
+3. In MongoDB Atlas → Network Access, allow Vercel to connect (e.g. `0.0.0.0/0`).
+4. Deploy, then run `npm run db:seed` once from your machine.
+
+> GitHub Pages only hosts static files, so it can't run the API route or connect to MongoDB. Host this site on Vercel (or another Node host).
+
+## Structure
+
+```
+src/
+  app/            layout (fonts, metadata, theme), page, globals.css, api/contact
+  components/     one file per section + motion helpers (Reveal, Tilt, Spotlight, CountUp…)
+  content/        site.ts: all content
+  lib/            mongo.ts (lazy, serverless-safe client), content.ts (cached project loader)
+scripts/seed.mjs  seeds projects and creates indexes
+```
