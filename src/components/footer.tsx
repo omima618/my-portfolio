@@ -1,6 +1,5 @@
 import { ArrowUp } from "lucide-react";
 import { nav, profile } from "@/content/site";
-import { FooterYear } from "./footer-year";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
 export function Footer() {
@@ -39,7 +38,7 @@ export function Footer() {
         </div>
 
         <p className="mt-8 text-xs text-muted">
-          © <FooterYear /> {profile.name}. All rights reserved.
+          © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { profile } from "@/content/site";
+import { withBase } from "@/lib/paths";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
     type: "website",
     title: `${profile.name} — Frontend Developer & Software Tester`,
     description,
-    images: [{ url: profile.photo, width: 1180, height: 1180, alt: profile.name }],
+    images: [{ url: withBase(profile.photo), width: 1180, height: 1180, alt: profile.name }],
   },
-  twitter: { card: "summary", title: profile.name, description, images: [profile.photo] },
+  twitter: { card: "summary", title: profile.name, description, images: [withBase(profile.photo)] },
 };
 
 export const viewport: Viewport = {

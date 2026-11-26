@@ -4,6 +4,7 @@ import { ArrowUpRight, Check, Copy, LoaderCircle, Mail, MapPin, Phone, Send } fr
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import { profile } from "@/content/site";
+import { isStaticSite, withBase } from "@/lib/paths";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { Reveal } from "./motion";
 import { SectionHeading } from "./section-heading";
@@ -18,6 +19,20 @@ const channels = [
   { icon: GithubIcon, label: "GitHub", value: "omima618", href: profile.links.github },
 ];
 
+function validate(data: Record<string, string>): FieldErrors {
+  const errors: FieldErrors = {};
+  if ((data.name ?? "").trim().length < 2) errors.name = ["Please enter your name"];
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((data.email ?? "").trim())) errors.email = ["Please enter a valid email"];
+  if ((data.message ?? "").trim().length < 10) errors.message = ["Message is a little short"];
+  return errors;
+}
+
+function openMail(data: Record<string, string>) {
+  const subject = data.subject?.trim() || `Hello from ${data.name}`;
+  const body = `${data.message}\n\n— ${data.name} (${data.email})`;
+  window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -28,12 +43,24 @@ export function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
-    setStatus("sending");
     setError("");
     setFields({});
 
+    if (isStaticSite) {
+      // Static hosting (GitHub Pages) has no server: check the fields here,
+      // then hand the message to the visitor's email app.
+      const errors = validate(data);
+      if (Object.keys(errors).length) {
+        setFields(errors);
+        return;
+      }
+      openMail(data);
+      return;
+    }
+
+    setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(withBase("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -51,8 +78,7 @@ export function Contact() {
       }
       if (res.status === 503) {
         // No database available — hand the message to the visitor's mail app instead.
-        const mail = `mailto:${profile.email}?subject=${encodeURIComponent(data.subject || `Hello from ${data.name}`)}&body=${encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`)}`;
-        window.location.href = mail;
+        openMail(data);
         setStatus("idle");
         return;
       }
@@ -176,7 +202,7 @@ export function Contact() {
                         className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-gold px-7 py-3.5 font-medium text-bg shadow-soft transition disabled:opacity-60"
                       >
                         {status === "sending" ? <LoaderCircle className="size-4 animate-spin" /> : <Send className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
-                        {status === "sending" ? "Sending…" : "Send message"}
+                        {status === "sending" ? "Sending…" : isStaticSite ? "Send via email" : "Send message"}
                       </button>
                     </div>
                   </motion.form>

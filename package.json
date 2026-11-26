@@ -6,6 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "build:pages": "node scripts/build-pages.mjs",
+    "deploy": "node scripts/deploy-pages.mjs",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "db:seed": "node --env-file-if-exists=.env.local scripts/seed.mjs"
@@ -34,5 +36,6 @@
     "eslint-config-next": "16.4.6",
     "tailwindcss": "^4.3.5",
     "typescript": "^5.9.3"
-  }
+  },
+  "homepage": "https://omima618.github.io/my-portfolio/"
 }

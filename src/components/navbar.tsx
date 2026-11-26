@@ -4,6 +4,7 @@ import { Download, Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 import { nav, profile } from "@/content/site";
+import { withBase } from "@/lib/paths";
 import { ThemeToggle } from "./theme-toggle";
 
 export function Navbar() {
@@ -82,7 +83,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <a
-              href={profile.cv}
+              href={withBase(profile.cv)}
               download
               className="hidden items-center gap-2 rounded-full bg-fg px-4 py-2.5 text-sm font-medium text-bg transition hover:opacity-90 sm:inline-flex"
             >
@@ -128,7 +129,7 @@ export function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              <a href={profile.cv} download className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-fg px-6 py-4 font-medium text-bg">
+              <a href={withBase(profile.cv)} download className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-fg px-6 py-4 font-medium text-bg">
                 <Download className="size-4" /> Download my CV
               </a>
             </div>

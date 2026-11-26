@@ -1,5 +1,5 @@
 import "server-only";
-import { cacheLife, cacheTag } from "next/cache";
+import { unstable_cache } from "next/cache";
 import { projects as fallbackProjects, type Project } from "@/content/site";
 import { getDb, isDbConfigured } from "./mongo";
 
@@ -7,12 +7,11 @@ import { getDb, isDbConfigured } from "./mongo";
  * Projects come from MongoDB (`projects` collection, seeded with
  * `npm run db:seed`) and fall back to the built-in list if the database is not
  * configured, empty or unreachable — the page never breaks because of the DB.
+ *
+ * Server build: cached and refreshed at most once an hour.
+ * GitHub Pages build: read once at build time and baked into the page.
  */
-export async function getProjects(): Promise<Project[]> {
-  "use cache";
-  cacheLife("hours");
-  cacheTag("projects");
-
+async function loadProjects(): Promise<Project[]> {
   if (!isDbConfigured()) return fallbackProjects;
   try {
     const db = await getDb();
@@ -27,3 +26,5 @@ export async function getProjects(): Promise<Project[]> {
     return fallbackProjects;
   }
 }
+
+export const getProjects = unstable_cache(loadProjects, ["projects"], { revalidate: 3600, tags: ["projects"] });

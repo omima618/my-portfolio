@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import type { Project } from "@/content/site";
+import { withBase } from "@/lib/paths";
 import { GithubIcon } from "./icons";
 import { Reveal, Spotlight, Tilt } from "./motion";
 import { SectionHeading } from "./section-heading";
@@ -29,7 +30,7 @@ function BrowserFrame({ project, priority = false, sizes }: { project: Project; 
       </div>
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={project.image}
+          src={withBase(project.image)}
           alt={`${project.title} screenshot`}
           fill
           priority={priority}
@@ -122,7 +123,7 @@ function Card({ project }: { project: Project }) {
     <Spotlight className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-card transition-all duration-500 hover:-translate-y-1 hover:border-line-strong hover:shadow-soft">
       <div className="relative aspect-[16/10] overflow-hidden border-b border-line">
         <Image
-          src={project.image}
+          src={withBase(project.image)}
           alt={`${project.title} screenshot`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"

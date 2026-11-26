@@ -3,6 +3,7 @@
 import { Download, Eye, GraduationCap, Languages } from "lucide-react";
 import { motion } from "motion/react";
 import { education, experience, languages, profile } from "@/content/site";
+import { withBase } from "@/lib/paths";
 import { Magnetic, Reveal, Tilt } from "./motion";
 import { SectionHeading } from "./section-heading";
 
@@ -72,7 +73,7 @@ export function Resume() {
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Magnetic>
                     <a
-                      href={profile.cv}
+                      href={withBase(profile.cv)}
                       download
                       className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-gold px-6 py-3 font-medium text-bg shadow-soft"
                     >
@@ -80,7 +81,7 @@ export function Resume() {
                     </a>
                   </Magnetic>
                   <a
-                    href={profile.cv}
+                    href={withBase(profile.cv)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-line-strong px-6 py-3 font-medium transition hover:border-accent hover:text-accent"

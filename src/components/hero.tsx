@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { profile } from "@/content/site";
+import { withBase } from "@/lib/paths";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { Magnetic } from "./motion";
 
@@ -128,7 +129,7 @@ export function Hero() {
             </Magnetic>
             <Magnetic>
               <a
-                href={profile.cv}
+                href={withBase(profile.cv)}
                 download
                 className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-card px-6 py-3.5 font-medium backdrop-blur transition hover:border-accent hover:text-accent"
               >
@@ -161,7 +162,7 @@ export function Hero() {
             </svg>
             <div className="relative size-full overflow-hidden rounded-full bg-gradient-to-b from-bg-soft to-bg-elev shadow-soft">
               <Image
-                src={profile.photo}
+                src={withBase(profile.photo)}
                 alt={`Portrait of ${profile.name}`}
                 fill
                 priority
