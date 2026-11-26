@@ -10,10 +10,10 @@ import { SectionHeading } from "./section-heading";
 /** A miniature, styled "paper" version of the CV's first page. */
 function PaperPreview() {
   return (
-    <div className="relative mx-auto w-full max-w-sm">
+    <div className="relative mx-auto w-full max-w-[14.5rem] sm:max-w-sm">
       <div aria-hidden className="absolute inset-0 translate-x-4 translate-y-4 rotate-3 rounded-2xl border border-line bg-bg-soft" />
       <div aria-hidden className="absolute inset-0 translate-x-2 translate-y-2 rotate-[1.5deg] rounded-2xl border border-line bg-bg-elev" />
-      <div className="relative aspect-[1/1.414] overflow-hidden rounded-2xl border border-line-strong bg-[#fffdfb] p-6 text-[#1b2a4a] shadow-soft sm:p-7">
+      <div className="relative aspect-[1/1.414] overflow-hidden rounded-2xl border border-line-strong bg-[#fffdfb] p-4 text-[#1b2a4a] shadow-soft sm:p-7">
         <p className="font-serif text-xl leading-none font-semibold sm:text-2xl">{profile.name}</p>
         <p className="mt-1.5 text-[10px] sm:text-xs">Frontend Developer · Software Tester</p>
         <p className="mt-1 text-[8px] text-[#555] sm:text-[9px]">
@@ -56,26 +56,26 @@ function PaperPreview() {
 
 export function Resume() {
   return (
-    <section id="resume" className="relative py-24 sm:py-32">
+    <section id="resume" className="relative py-20 sm:py-28 lg:py-32">
       <div className="container-x">
         <SectionHeading index="05" eyebrow="Résumé" title="The full story," accent="on paper." />
 
-        <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-[2rem] border border-line bg-card p-8 sm:p-10">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <Reveal className="min-w-0">
+            <div className="relative overflow-hidden rounded-3xl border border-line bg-card px-5 py-8 sm:rounded-[2rem] sm:p-10">
               <div aria-hidden className="absolute -top-24 -right-24 size-72 rounded-full bg-[var(--glow-1)] blur-3xl" />
               <Tilt max={5}>
                 <PaperPreview />
               </Tilt>
-              <div className="relative mt-10 text-center">
+              <div className="relative mt-8 text-center sm:mt-10">
                 <p className="font-display text-2xl">Download my CV</p>
                 <p className="mt-1 text-sm text-muted">Updated November 2026 · PDF</p>
-                <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <Magnetic>
+                <div className="mx-auto mt-6 grid max-w-sm grid-cols-2 gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center">
+                  <Magnetic className="w-full sm:w-auto">
                     <a
                       href={withBase(profile.cv)}
                       download
-                      className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-gold px-6 py-3 font-medium text-bg shadow-soft"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent to-gold px-4 py-3 text-[15px] font-medium whitespace-nowrap text-bg shadow-soft sm:w-auto sm:px-6 sm:text-base"
                     >
                       <Download className="size-4" /> Download PDF
                     </a>
@@ -84,7 +84,7 @@ export function Resume() {
                     href={withBase(profile.cv)}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-line-strong px-6 py-3 font-medium transition hover:border-accent hover:text-accent"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-line-strong px-4 py-3 text-[15px] font-medium whitespace-nowrap transition hover:border-accent hover:text-accent sm:w-auto sm:px-6 sm:text-base"
                   >
                     <Eye className="size-4" /> View online
                   </a>
@@ -93,17 +93,17 @@ export function Resume() {
             </div>
           </Reveal>
 
-          <div className="space-y-12">
+          <div className="min-w-0 space-y-10 sm:space-y-12">
             <div>
               <Reveal>
-                <h3 className="mb-6 flex items-center gap-3 font-display text-3xl">
+                <h3 className="mb-4 flex items-center gap-3 font-display text-[1.75rem] sm:mb-6 sm:text-3xl">
                   <GraduationCap className="size-6 text-accent" /> Education
                 </h3>
               </Reveal>
               <div className="space-y-4">
                 {education.map((e, i) => (
                   <Reveal key={e.title} delay={i * 0.08}>
-                    <div className="rounded-3xl border border-line bg-card p-6 transition-colors hover:border-line-strong">
+                    <div className="rounded-2xl border border-line bg-card p-5 transition-colors hover:border-line-strong sm:rounded-3xl sm:p-6">
                       <p className="font-mono text-xs tracking-wider text-accent uppercase">{e.period}</p>
                       <p className="mt-2 text-lg font-semibold">{e.title}</p>
                       <p className="mt-1 text-sm text-muted">
@@ -117,11 +117,11 @@ export function Resume() {
 
             <div>
               <Reveal>
-                <h3 className="mb-6 flex items-center gap-3 font-display text-3xl">
+                <h3 className="mb-4 flex items-center gap-3 font-display text-[1.75rem] sm:mb-6 sm:text-3xl">
                   <Languages className="size-6 text-accent" /> Languages
                 </h3>
               </Reveal>
-              <div className="space-y-5 rounded-3xl border border-line bg-card p-6">
+              <div className="space-y-5 rounded-2xl border border-line bg-card p-5 sm:rounded-3xl sm:p-6">
                 {languages.map((l, i) => (
                   <div key={l.name}>
                     <div className="mb-2 flex items-baseline justify-between">

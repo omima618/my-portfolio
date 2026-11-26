@@ -4,17 +4,17 @@ import { GithubIcon, LinkedinIcon } from "./icons";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-line pt-20 pb-10">
+    <footer className="relative border-t border-line pt-16 pb-10 sm:pt-20">
       <div className="container-x">
-        <a href={`mailto:${profile.email}`} className="group block">
+        <a href="#contact" className="group block w-fit" aria-label="Say hello — go to the contact form">
           <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Have an idea?</p>
           <p className="mt-4 font-display text-[clamp(2.6rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
             Say <em className="text-gradient italic">hello</em>
-            <span className="inline-block transition-transform duration-500 group-hover:translate-x-3">→</span>
+            <span className="ml-2 inline-block text-accent transition-transform duration-500 group-hover:translate-x-3">→</span>
           </p>
         </a>
 
-        <div className="mt-16 flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-center md:justify-between">
+        <div className="mt-12 flex flex-col gap-6 border-t border-line pt-8 sm:mt-16 md:flex-row md:items-center md:justify-between">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
             {nav.map((n) => (
               <li key={n.id}>
