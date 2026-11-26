@@ -56,9 +56,11 @@ This builds a static version (`npm run build:pages` → `./out`) and pushes it t
 - the contact form checks the fields, then opens the visitor's email app with the message filled in;
 - projects come from `src/content/site.ts`. If `MONGODB_URI` is set when you deploy, they're read from MongoDB once and built into the page.
 
-### Vercel (full version, optional)
+### Vercel (full version)
 
-`npm run build` builds the full site, which saves contact messages to MongoDB and refreshes projects from MongoDB every hour.
+Live at **https://omima-ghanem.vercel.app** (Vercel project `omima-ghanem`). Every push to `main` deploys automatically. This version saves contact messages to MongoDB (`portfolio` database, `messages` collection) and refreshes projects from MongoDB every hour.
+
+Setting it up again from scratch:
 
 1. Import the GitHub repository in Vercel (framework preset: Next.js).
 2. Add `MONGODB_URI`, `MONGODB_DB` and `NEXT_PUBLIC_SITE_URL` as environment variables.
